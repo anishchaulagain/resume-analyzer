@@ -1,19 +1,19 @@
 import streamlit as st
 import mysql.connector
 import bcrypt
-
-from homepage import show_homepage
+from streamlit_extras.switch_page_button import switch_page
+from pages import homepage
 
 # Create a MySQL connection
 conn = mysql.connector.connect(
     host="localhost",
     user="root",
-    password="xxx",
+    password="anees@123",
     database="streamlit"
 )
 cursor = conn.cursor()
 
-
+st.set_page_config(initial_sidebar_state="collapsed")
 # Streamlit app title
 st.title("Resume Analyzer for Job Seekers")
 
@@ -65,9 +65,15 @@ if show_login:
  password = st.text_input("Password", type="password", key="password2")
  if st.button("Login"):
     if login_user(username, password):
+
         st.success("Logged in successfully!")
+        switch_page("homepage")
+
+
     else:
         st.error("Authentication failed. Please check your credentials.")
+
+
 
 # Close the database connection when done
 conn.close()
