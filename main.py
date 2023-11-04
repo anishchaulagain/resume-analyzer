@@ -2,14 +2,17 @@ import streamlit as st
 import mysql.connector
 import bcrypt
 
+from homepage import show_homepage
+
 # Create a MySQL connection
 conn = mysql.connector.connect(
     host="localhost",
     user="root",
-    password="xxx",
+    password="anees@123",
     database="streamlit"
 )
 cursor = conn.cursor()
+
 
 # Streamlit app title
 st.title("Resume Analyzer for Job Seekers")
@@ -43,6 +46,7 @@ def login_user(username, password):
         return True
     return False
 
+
 # User registration form
 if show_signup:
  st.subheader("Sign Up")
@@ -52,6 +56,7 @@ if show_signup:
     if new_username and new_password:
         register_user(new_username, new_password)
         st.success("User registered successfully!")
+
 
 # User login form
 if show_login:
