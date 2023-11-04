@@ -6,7 +6,7 @@ import bcrypt
 conn = mysql.connector.connect(
     host="localhost",
     user="root",
-    password="anees@123",
+    password="xxx",
     database="streamlit"
 )
 cursor = conn.cursor()
